@@ -16,7 +16,7 @@ function TodoItem(props) {
           </div>
         </label>
       </div>
-      <div className="todo-delimiter" style={{ backgroundColor: props.obj.color }}></div>
+      <div className={'todo-delimiter ' + props.obj.color}></div>
       <p className="todo-text">{props.obj.text}</p>
       <div className="todo-actions">
         <svg

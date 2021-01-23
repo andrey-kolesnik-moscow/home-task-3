@@ -114,7 +114,6 @@ function App() {
                   color === currentColor ? `todo-color ${color} active` : `todo-color ${color}`
                 }
                 key={color}
-                // color = {color}
                 onClick={() => {
                   setCurrentColor(color);
                 }}></li>
