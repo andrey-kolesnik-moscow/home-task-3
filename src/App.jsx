@@ -4,9 +4,9 @@ import TodoItem from './components/TodoItem';
 const colors = ['grey', 'red', 'blue', 'orange', 'green'];
 
 function App() {
-  const [currentColor, setCurrentColor] = React.useState('grey');
   const [tasks, setTasks] = React.useState([]);
   const [inputValue, setInputValue] = React.useState('');
+  const [currentColor, setCurrentColor] = React.useState('grey');
   const textInput = React.useRef(null);
   const firstRender = React.useRef(true);
 
@@ -28,7 +28,8 @@ function App() {
   }, []);
 
   const addTask = (e) => {
-    if (e.key === 'Enter' && e.target.value.trim()) {
+    const inputedText = e.target.value.trim();
+    if (e.key === 'Enter' && inputedText) {
       setTasks((prevValue) => {
         let id;
         if (tasks.length === 0) {
@@ -40,7 +41,7 @@ function App() {
           ...prevValue,
           {
             id,
-            text: e.target.value,
+            text: inputedText,
             color: currentColor,
             completed: false,
           },
@@ -60,15 +61,17 @@ function App() {
   }
 
   function correctNote(id, text) {
-    let newText = window.prompt('Откорректируйте задачу', text);
-    setTasks((prev) =>
-      prev.map((item) => {
-        if (item.id === id) {
-          item.text = newText;
-        }
-        return item;
-      }),
-    );
+    let newText = window.prompt('Изменить задачу:', text);
+    if (newText !== null) {
+      setTasks((prev) =>
+        prev.map((item) => {
+          if (item.id === id) {
+            item.text = newText.trim();
+          }
+          return item;
+        }),
+      );
+    }
   }
 
   function setComleted(id) {
