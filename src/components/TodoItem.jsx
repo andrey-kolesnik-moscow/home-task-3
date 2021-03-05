@@ -1,4 +1,7 @@
-function TodoItem(props) {
+import React from 'react';
+
+export default React.memo(function TodoItem(props) {
+  console.log('rerender');
   return (
     <div className="todo-item">
       <div className="todo-checkbox">
@@ -38,6 +41,4 @@ function TodoItem(props) {
       </div>
     </div>
   );
-}
-
-export default TodoItem;
+});

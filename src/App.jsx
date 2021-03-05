@@ -52,14 +52,14 @@ function App() {
     }
   };
 
-  function removeNote(id) {
+  const removeNote = React.useCallback((id) => {
     let result = window.confirm('Вы действительно хотите удалить эту запись?');
     if (result) {
       setTasks((prev) => prev.filter((item) => item.id !== id));
     }
-  }
+  }, []);
 
-  function correctNote(id, text) {
+  const correctNote = React.useCallback((id, text) => {
     let newText = window.prompt('Изменить задачу:', text);
     if (newText !== null) {
       setTasks((prev) =>
@@ -71,9 +71,9 @@ function App() {
         }),
       );
     }
-  }
+  }, []);
 
-  function setComleted(id) {
+  const setComleted = React.useCallback((id) => {
     setTasks((prev) =>
       prev.map((item) => {
         if (item.id === id) {
@@ -85,7 +85,7 @@ function App() {
         return item;
       }),
     );
-  }
+  }, []);
 
   return (
     <div className="App">
