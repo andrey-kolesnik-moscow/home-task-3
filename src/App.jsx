@@ -8,12 +8,11 @@ function App() {
   const [inputValue, setInputValue] = React.useState('');
   const [currentColor, setCurrentColor] = React.useState('grey');
   const textInput = React.useRef(null);
-  const firstRender = React.useRef(true);
 
   React.useEffect(() => {
-    !firstRender.current
-      ? localStorage.setItem('dataLesson3', JSON.stringify(tasks))
-      : (firstRender.current = false);
+    if (tasks.length) {
+      localStorage.setItem('dataLesson3', JSON.stringify(tasks));
+    }
   }, [tasks]);
 
   React.useEffect(() => {
