@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default React.memo(function TodoItem(props) {
-  console.log('rerender');
   return (
     <div className="todo-item">
       <div className="todo-checkbox">
